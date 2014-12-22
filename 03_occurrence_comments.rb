@@ -1,5 +1,8 @@
 require 'pp'
+require 'json'
 
+file = File.read('curriculum.json')
+curriculum = JSON.parse(file)
 # Require json and parse the json file
 #
 # Print out the number of comments next to the occurrence
@@ -27,3 +30,10 @@ require 'pp'
 #       g4 on 2013-05-08 - 0
 #       g5 on 2013-06-08 - 0
 #       etc...
+
+curriculum["units"].each do |unit|
+  puts "#{unit["name"]}"
+  unit["lessons"].each do |lesson|
+    puts "  #{lesson["name"]}"
+  end
+end
